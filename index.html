@@ -106,8 +106,8 @@
 				//camera.rotation.x = accel.x;
 				//camera.rotation.y = accel.y;
 				//~ camera.rotation.z = accel.z;
-				lat = accel.x;
-				lon = accel.y;
+				lat = accel.x * 9;
+				lon = accel.y * 9;
 				
 				lat = Math.max( - 85, Math.min( 85, lat ) );
 				phi = THREE.Math.degToRad( 90 - lat );
