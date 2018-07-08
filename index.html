@@ -54,7 +54,7 @@
 			document.body.appendChild( renderer.domElement );
 			
 			
-			var geometry = new THREE.SphereBufferGeometry( 5, 30, 30 );
+			var geometry = new THREE.SphereBufferGeometry( 500, 30, 30 );
 			geometry.applyMatrix( new THREE.Matrix4().makeScale( 1.0, 1.2, 1.5 ) );
 			var wireframe = new THREE.WireframeGeometry( geometry );
 			var line = new THREE.LineSegments( wireframe );
@@ -112,8 +112,8 @@
 				lat = Math.max( - 85, Math.min( 85, lat ) );
 				phi = THREE.Math.degToRad( 90 - lat );
 				theta = THREE.Math.degToRad( lon );
-				camera.rotation.x = 500 * Math.sin( phi ) * Math.cos( theta );
-				camera.rotation.y = 500 * Math.cos( phi );
+				camera.rotation.x = phi;
+				camera.rotation.y = theta;
 				camera.rotation.z = 500 * Math.sin( phi ) * Math.sin( theta );
                    
             }
