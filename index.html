@@ -16,12 +16,36 @@
 </head>
 <body>
   
-  
-  
+  <style>
+            body {
+                margin: 0px;
+            }
+            #footerTable {
+                width: 100%;
+            }
+            footer {
+                position:absolute;
+                bottom:0;
+                width:100%;
+                height:40px;   
+                background:#ccc;
+                }
+        </style>
+  <footer>
+            <table id="footerTable">
+                <tr>
+                    <td>X: <span id="xOut">0</span></td>
+                    <td>Y: <span id="yOut">0</span></td>
+                    <td>Z: <span id="zOut">0</span></td>
+                </tr>
+            </table>
+        </footer>
   
   
   <script src="cordova.js"></script>
   <script>
+            var watch = 0;
+
             window.onload = function()
             {
                 //init();
@@ -30,7 +54,22 @@
 
             function init()
             {
-                alert("Ready!");
+                 watch = navigator.accelerometer.watchAcceleration(success, failure, {frequency: 100});
+               
+
+            }
+
+            function success(accel)
+            {
+                document.getElementById("xOut").innerHTML = accel.x;
+                document.getElementById("yOut").innerHTML = accel.y;
+                document.getElementById("zOut").innerHTML = accel.z;
+                   
+            }
+
+            function failure()
+            {
+                alert("Error");
             }
 </script>
   
