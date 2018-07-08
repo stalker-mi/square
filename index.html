@@ -61,7 +61,9 @@
 			
 			
 			scene.add( line );
-
+			
+			camera.position.x = 0;
+			camera.position.y = 0;
 			camera.position.z = 0;
 
 			var animate = function () {
@@ -93,14 +95,27 @@
                       failure, {frequency: 25});      
             }
 
+			var lat = 0;
+			var lon = 0;
+			
             function success(accel)
             {
                document.getElementById("xOut").innerHTML = accel.x;
                 document.getElementById("yOut").innerHTML = accel.y;
                 document.getElementById("zOut").innerHTML = accel.z;
-				camera.rotation.x = accel.x;
-				camera.rotation.y = accel.y;
-				camera.rotation.z = accel.z;
+				//camera.rotation.x = accel.x;
+				//camera.rotation.y = accel.y;
+				//~ camera.rotation.z = accel.z;
+				lat = accel.x;
+				lon = accel.y;
+				
+				lat = Math.max( - 85, Math.min( 85, lat ) );
+				phi = THREE.Math.degToRad( 90 - lat );
+				theta = THREE.Math.degToRad( lon );
+				camera.target.x = 500 * Math.sin( phi ) * Math.cos( theta );
+				camera.target.y = 500 * Math.cos( phi );
+				camera.target.z = 500 * Math.sin( phi ) * Math.sin( theta );
+				camera.lookAt( camera.target );
                    
             }
 
