@@ -21,7 +21,18 @@
   
   
   <script src="cordova.js"></script>
-  
+  <script>
+            window.onload = function()
+            {
+                //init();
+                document.addEventListener("deviceready", init, false);
+            }
+
+            function init()
+            {
+                alert("Ready!");
+            }
+</script>
   
   </body>
 </html>
