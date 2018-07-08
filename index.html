@@ -49,7 +49,7 @@
   <script src="cordova.js"></script>
   <script>
             var watch = 0;
-            var cnv, target;
+            var cnv, target, canvas;
             window.onload = function()
             {
                 //init();
@@ -61,19 +61,20 @@
               
                  var iW = window.innerWidth;
                   var iH = window.innerHeight;
-                  cnv = document.getElementById('myCanvas').getContext("2d");
+                  canvas= document.getElementById('myCanvas');
+                  cnv = canvas.getContext("2d");
                   cnv.canvas.width = iW;
                   cnv.canvas.height = iH-40;
                   target = new Image();
                   target.src = "crosshair.png";
+                  xPos = (iW-target.width)/2;
+                  yPos = (iH-target.height)/2;
                   target.onload = function()
                   {
-                      cnv.drawImage(target, (iW-(target.width))/2, (iH-
-                      (target.height))/2);
-                   }
-                   watch = navigator.accelerometer.watchAcceleration(success,
-                       failure, {frequency: 100});
-
+                      cnv.drawImage(target, xPos, yPos);
+                  }
+                  watch = navigator.accelerometer.watchAcceleration(success, 
+                      failure, {frequency: 25});      
             }
 
             function success(accel)
