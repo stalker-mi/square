@@ -41,8 +41,41 @@
   
   <script src="cordova.js"></script>
   <script src="js/three.min.js"></script>
-  <script src="js/three/controls/DeviceOrientationControls.js"></script>
-  <script>
+
+
+
+<script>
+			var scene = new THREE.Scene();
+			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+			
+			
+			var geometry = new THREE.SphereBufferGeometry( 5, 30, 30 );
+			geometry.applyMatrix( new THREE.Matrix4().makeScale( 1.0, 1.2, 1.5 ) );
+			var wireframe = new THREE.WireframeGeometry( geometry );
+			var line = new THREE.LineSegments( wireframe );
+			
+			
+			scene.add( line );
+
+			camera.position.z = 0;
+
+			var animate = function () {
+				requestAnimationFrame( animate );
+
+				//line.rotation.x += 0.01;
+				//line.rotation.y += 0.01;
+				
+				
+				renderer.render( scene, camera );
+			};
+
+			animate();
+		</script>
+    <script>
             var watch = 0;
             var cnv, target, canvas;
             window.onload = function()
@@ -64,7 +97,9 @@
                document.getElementById("xOut").innerHTML = accel.x;
                 document.getElementById("yOut").innerHTML = accel.y;
                 document.getElementById("zOut").innerHTML = accel.z;
-
+				camera.rotation.x = accel.x;
+				camera.rotation.y = accel.y;
+				camera.rotation.z = accel.z;
                    
             }
 
@@ -73,42 +108,6 @@
                 alert("Error");
             }
 </script>
-
-
-<script>
-			var scene = new THREE.Scene();
-			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
-
-			var renderer = new THREE.WebGLRenderer();
-			renderer.setSize( window.innerWidth, window.innerHeight );
-			document.body.appendChild( renderer.domElement );
-
-			var controls = new THREE.DeviceOrientationControls( camera );
-			
-			
-			var geometry = new THREE.SphereBufferGeometry( 5, 30, 30 );
-			geometry.applyMatrix( new THREE.Matrix4().makeScale( 1.0, 1.2, 1.5 ) );
-			var wireframe = new THREE.WireframeGeometry( geometry );
-			var line = new THREE.LineSegments( wireframe );
-			
-			
-			scene.add( line );
-
-			camera.position.z = 10;
-
-			var animate = function () {
-				requestAnimationFrame( animate );
-
-				//line.rotation.x += 0.01;
-				//line.rotation.y += 0.01;
-				controls.update();
-				
-				renderer.render( scene, camera );
-			};
-
-			animate();
-		</script>
-  
   </body>
 </html>
   
