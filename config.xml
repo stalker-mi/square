@@ -1,9 +1,9 @@
 <widget xmlns   = "http://www.w3.org/ns/widgets"
     xmlns:gap   = "http://phonegap.com/ns/1.0"
-    id          = "com.gelisimtakip.host"
+    id          = "com.vdem.square"
     versionCode = "11"
     version     = "1.0.0" >
-    <name>GelisimTakip Host</name>
+    <name>Square</name>
 
   <description>
       Description
@@ -17,6 +17,7 @@
     
     <access origin="*"/>
    
+    <plugin name="cordova-plugin-device-motion"  />
     
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
