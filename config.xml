@@ -1,0 +1,24 @@
+<widget xmlns   = "http://www.w3.org/ns/widgets"
+    xmlns:gap   = "http://phonegap.com/ns/1.0"
+    id          = "com.gelisimtakip.host"
+    versionCode = "11"
+    version     = "1.0.0" >
+    <name>GelisimTakip Host</name>
+
+  <description>
+      Description
+  </description>
+
+  <author href="https://build.phonegap.com" email="vdem@in-syst.ru">
+      Vladimir Demidovich
+  </author>
+    
+    <icon src="icons/645498_man.png" />
+    
+    <access origin="*"/>
+   
+    
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+
+</widget>
