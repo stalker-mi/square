@@ -97,9 +97,9 @@
                document.getElementById("xOut").innerHTML = accel.x;
                 document.getElementById("yOut").innerHTML = accel.y;
                 document.getElementById("zOut").innerHTML = accel.z;
-				camera.rotation.x = accel.x * 0.1;;
-				camera.rotation.y = accel.y * 0.1;
-				//~ camera.rotation.z = accel.z;
+				camera.rotation.x = accel.y * 0.1;
+				camera.rotation.y = accel.z * 0.1;
+				camera.rotation.z = accel.y * 0.1;
                    
             }
 
