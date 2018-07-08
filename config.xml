@@ -15,6 +15,7 @@
     
     <icon src="icons/pattern-squares-and-octagons-1.png" />
     
+    <preference name="orientation" value="portrait" />
     <access origin="*"/>
    
     <plugin name="cordova-plugin-device-motion"  />
