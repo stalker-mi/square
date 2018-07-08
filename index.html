@@ -35,6 +35,11 @@
                     <td>Y: <span id="yOut">0</span></td>
                     <td>Z: <span id="zOut">0</span></td>
                 </tr>
+                <tr>
+                    <td>A: <span id="aOut">0</span></td>
+                    <td>B: <span id="bOut">0</span></td>
+                    <td>G: <span id="gOut">0</span></td>
+                </tr>
             </table>
         </footer>
   
@@ -103,18 +108,18 @@
                document.getElementById("xOut").innerHTML = accel.x;
                 document.getElementById("yOut").innerHTML = accel.y;
                 document.getElementById("zOut").innerHTML = accel.z;
+                
+                document.getElementById("aOut").innerHTML = accel.rotationRate.alpha;
+                document.getElementById("bOut").innerHTML = accel.rotationRate.beta;
+                document.getElementById("gOut").innerHTML = accel.rotationRate.gamma;
+                
 				//camera.rotation.x = accel.x;
 				//camera.rotation.y = accel.y;
 				//~ camera.rotation.z = accel.z;
-				lat = accel.x * 9;
-				lon = accel.y * 9;
 				
-				lat = Math.max( - 85, Math.min( 85, lat ) );
-				phi = THREE.Math.degToRad( 90 - lat );
-				theta = THREE.Math.degToRad( lon );
-				camera.rotation.x = phi;
-				camera.rotation.y = theta;
-				camera.rotation.z = 500 * Math.sin( phi ) * Math.sin( theta );
+				camera.rotation.x = THREE.Math.degToRad(accel.rotationRate.beta);
+				camera.rotation.y = THREE.Math.degToRad(accel.rotationRate.gamma);
+				camera.rotation.z = THREE.Math.degToRad(accel.rotationRate.alpha);
                    
             }
 
